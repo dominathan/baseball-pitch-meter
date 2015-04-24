@@ -20,7 +20,19 @@ window.onload = function()
 {
   var elem = document.getElementById('button');
   elem.addEventListener('click', function(){
-    document.getElementById('result').innerHTML = test(parseInt(document.getElementById("speed").value)) + " seconds";
+
+    //Clear old setTimeout if clicked again
+    clearTimeout()
+
+    var speed = parseInt(document.getElementById("speed").value);
+    //return to DOM the seconds elapsed delayed by the seconds elapsed.
+    setTimeout(giveToDom,test(speed)*1000);
   })
+
+  //Append to DOM function
+  function giveToDom() {
+    var speed = parseInt(document.getElementById("speed").value);
+    document.getElementById('result').innerHTML = test(speed) + " seconds";
+  }
 }
 
